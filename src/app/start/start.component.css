@@ -1,0 +1,8 @@
+.startButton{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+.start-wrapper{
+    padding-top: 20%;
+}

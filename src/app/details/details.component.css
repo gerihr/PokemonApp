@@ -1,0 +1,13 @@
+.pokemon-detail{
+    margin-top: 10px;
+}
+.card-wrapper{
+    display: flex; 
+    justify-content: center;
+}
+.card-width{
+    width:540px
+}
+.backButton{
+    cursor: pointer;
+}

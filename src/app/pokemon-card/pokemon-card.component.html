@@ -1,0 +1,23 @@
+  <nz-card class="card" [nzCover]="coverTemplate" 
+  [nzActions]="[actionEdit]">
+      <nz-card-meta
+        nzTitle={{data.name|uppercase}}
+        [nzDescription]="pokemonDescription"
+      ></nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzSrc="{{data.image}}"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+      <img alt="example" src="{{data.image}}" />
+    </ng-template>
+    <ng-template #actionEdit>
+      <div type="button" (click)="seeDetails(data)"><span>Edit <span nz-icon nzType="edit"></span></span></div>
+    </ng-template>
+    <ng-template #pokemonDescription>
+      <div *ngIf="data.info" >
+        <div *ngFor="let ability of data.info.abilities">
+          <span>{{ability.ability.name | titlecase}} - <b>{{ability.slot}}</b></span>
+        </div>
+      </div>
+    </ng-template>

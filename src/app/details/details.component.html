@@ -1,0 +1,47 @@
+<div *ngIf="pokemonData">
+    <h1 class="site-page-header">{{pokemonData.name|uppercase}}</h1>
+    <div class="card-wrapper" >
+        <nz-card nzHoverable class="card-width" [nzCover]="coverTemplate">
+            <nz-card-meta [nzTitle]="pokemonTitle" [nzDescription]="pokemonDetails"></nz-card-meta>
+          </nz-card>
+          <ng-template #pokemonTitle>
+            <div *ngIf="!isEditing" type="button" (click)="goBack()">
+              <span class="backButton" nz-icon nzType="left" nzTheme="outline"></span>
+              <span>Go Back</span>
+            </div>
+
+            <h3>Pokemon Details 
+                <span *ngIf="!isEditing" nz-icon nzType="edit" nzTheme="outline" (click)="editDetails()"></span>
+                <span *ngIf="isEditing" nz-icon nzType="check" nzTheme="outline" (click)="saveDetails()"></span>
+            </h3>
+          </ng-template>
+          <ng-template #coverTemplate>
+            <img  src="{{pokemonData.image}}" />
+          </ng-template>
+          <ng-template #pokemonDetails>
+            <div *ngIf="pokemonData?.info && pokemonDetailsForm">
+              <form [formGroup]="pokemonDetailsForm">
+                <div class="pokemon-detail">
+                    <h3>Height</h3> 
+                    <span *ngIf="!isEditing">{{pokemonDetailsForm.controls.height.value}}</span>
+                    <input formControlName="height" *ngIf="isEditing" nz-input placeholder="default size" nzSize="default" />
+                </div>
+
+                <div class="pokemon-detail">
+                    <h3>Weight</h3> 
+                     <span *ngIf="!isEditing">{{pokemonDetailsForm.controls.weight.value}}</span>
+                     <input formControlName="weight" *ngIf="isEditing" nz-input placeholder="default size" nzSize="default" />
+                </div>
+
+                <div class="pokemon-detail">
+                    <h3>Base experience</h3> 
+                     <span *ngIf="!isEditing">{{pokemonDetailsForm.controls.base_experience.value}}</span>
+                     <input  formControlName="base_experience" *ngIf="isEditing" nz-input placeholder="default size" nzSize="default" />
+                </div>
+
+              </form>
+            </div>
+          </ng-template>
+    </div>
+</div>
+

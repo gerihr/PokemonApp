@@ -1,0 +1,7 @@
+<h1 class="site-page-header">Welcome to PokemonWorld</h1>
+<div *ngIf="pokemen$ | async" class="card-wrapper">
+    <div *ngFor="let pokemon of pokemen$ | async, let i=index" >
+            <app-pokemon-card [data]="pokemon"></app-pokemon-card>
+    </div>
+</div>
+
